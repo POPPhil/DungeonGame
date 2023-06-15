@@ -64,10 +64,14 @@ public class Game {
         try (Scanner scanner = new Scanner(System.in)) {
             boolean gameRunning = true;
             while (gameRunning) {
-
                 System.out.print(MOVE_LEGEND);
 
                 String input = scanner.nextLine().toUpperCase();
+
+                if (input.isEmpty()) {
+                    System.err.println("\nErreur : Aucune entrée détectée.\n");
+                    continue;
+                }
 
                 switch (input) {
                     case Constants.MOVE_UP:
@@ -86,18 +90,15 @@ public class Game {
                         gameRunning = false;
                         break;
                     default:
-
                         messages[0] = INVALID_INPUT;
-
                 }
 
                 // clearConsole();
                 if (gameRunning) {
-
                     printMap(map, messages);
-
                 }
             }
         }
+
     }
 }
