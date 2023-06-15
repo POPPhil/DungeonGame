@@ -40,9 +40,7 @@ public class Constants {
     public static final String QUIT_GAME = "X";                                                                // Quitter le jeu
 
     public static final String MOVE_LEGEND =
-            "Déplacement avec les touches suivantes en appuyant sur entrer" +
-                    "\n\n" +
-                    "(Z: Nord, S: Sud, Q: Ouest, D: Est, X: Quitter) : ";                                      // Légende des mouvements et actions possibles
+            "Utilisez les touches suivantes, (Z: Haut, S: Bas, Q: Gauche, D: Droite, X: Quitter) : ";          // Légende des mouvements et actions possibles
 
     // Constantes pour les messages
     public static final String MONSTER_ENCOUNTER = "Vous avez rencontré un monstre. Vous perdez une vie !";    // Message de rencontre de monstre
