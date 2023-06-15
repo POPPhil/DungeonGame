@@ -69,7 +69,7 @@ public class Game {
                 String input = scanner.nextLine().toUpperCase();
 
                 if (input.isEmpty()) {
-                    System.err.println("\nnErreur : Aucune entrée détectée.\n");
+                    System.err.println("\nErreur : Aucune entrée détectée.\n");
                     continue;
                 }
 
