@@ -1,8 +1,10 @@
 package com.DungeonGame;
 
+import static com.DungeonGame.Constants.*;
+
 public class Printer {
     // Affichage de la MAP
-    static void printMap(String[][] map, String[] messages) {
+    static void printMap(String[][] map, String[] messages, String[] errorMessages) {
         StringBuilder sb = new StringBuilder();
 
         sb.append("\n======= Carte du donjon ======\n\n");
@@ -18,16 +20,22 @@ public class Printer {
 
         System.out.println(sb.toString());
 
-        printMessages(messages);
+        printMessages(messages, errorMessages);
 
-        System.out.println(Constants.SEPARATION_LINE);
+        System.out.println(SEPARATION_LINE);
     }
 
     // Affichage des messages
-    static void printMessages(String[] messages) {
-        if (messages.length > 0) {
-            for (String message : messages) {
+    static void printMessages(String[] messages, String[] errorMessages) {
+        for (String message : messages) {
+            if (message != null && !message.isEmpty()) {
                 System.out.println(message);
+            }
+        }
+
+        for (String errorMessage : errorMessages) {
+            if (errorMessage != null && !errorMessage.isEmpty()) {
+                System.err.println(ERROR_PREFIX + errorMessage);
             }
         }
     }
@@ -36,6 +44,6 @@ public class Printer {
      * Affiche la légende du jeu avec les règles et les symboles utilisés.
      */
     static void printLegend() {
-        System.out.println(Constants.LEGEND);
+        System.out.println(LEGEND);
     }
 }

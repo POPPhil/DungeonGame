@@ -59,7 +59,7 @@ public class Game {
         // Étape 3 : Afficher la carte et demander les mouvements à l'utilisateur
         printLegend();
 
-        printMap(map, messages);
+        printMap(map, messages, errorMessages);
 
         try (Scanner scanner = new Scanner(System.in)) {
             boolean gameRunning = true;
@@ -69,7 +69,7 @@ public class Game {
                 String input = scanner.nextLine().toUpperCase();
 
                 if (input.isEmpty()) {
-                    System.err.println("\nErreur : Aucune entrée détectée.\n");
+                    System.err.println(ERROR_NO_INPUT);
                     continue;
                 }
 
@@ -90,12 +90,12 @@ public class Game {
                         gameRunning = false;
                         break;
                     default:
-                        messages[0] = INVALID_INPUT;
+                        messages[0] = ERROR_INVALID_INPUT;
                 }
 
                 // clearConsole();
                 if (gameRunning) {
-                    printMap(map, messages);
+                    printMap(map, messages, errorMessages);
                 }
             }
         }

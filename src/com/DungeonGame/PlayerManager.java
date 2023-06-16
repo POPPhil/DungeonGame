@@ -38,7 +38,7 @@ public class PlayerManager {
         if (newRow >= 0 && newRow < map.length && newCol >= 0 && newCol < map[0].length) {
             String newSymbol = map[newRow][newCol];
 
-            if (newSymbol.equals(String.valueOf(Constants.EMPTY_SYMBOL))) {
+            if (newSymbol.equals(String.valueOf(EMPTY_SYMBOL))) {
                 // Déplacement sur une case vide
                 map[playerPosition[0]][playerPosition[1]] = String.valueOf(EMPTY_SYMBOL);
                 playerPosition[0] = newRow;
@@ -60,10 +60,10 @@ public class PlayerManager {
                 // Atteinte de l'objectif (drapeau)
                 winGame();
             } else {
-                messageBuilder.append(INVALID_MOVE);
+                messageBuilder.append(ERROR_INVALID_MOVE);
             }
         } else {
-            messageBuilder.append(OUT_OF_BOUNDS);
+            messageBuilder.append(ERROR_OUT_OF_BOUNDS);
         }
 
         // Gérer le déplacement du monstre
@@ -72,7 +72,7 @@ public class PlayerManager {
         }
 
         messages = new String[]{messageBuilder.toString().trim()};
-        printMap(map, messages);
+        printMap(map, messages, errorMessages);
     }
 
     /**
