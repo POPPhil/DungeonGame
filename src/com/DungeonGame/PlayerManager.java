@@ -8,6 +8,7 @@ import static com.DungeonGame.Constants.*;
 import static com.DungeonGame.GameStatus.*;
 import static com.DungeonGame.Printer.*;
 import static com.DungeonGame.MonsterManager.*;
+import static com.DungeonGame.MessageManager.*;
 
 public class PlayerManager {
     /**
@@ -19,9 +20,10 @@ public class PlayerManager {
      * @param colOffset      la valeur de décalage pour la colonne.
      */
     static void movePlayer(String[][] map, int[] playerPosition, int rowOffset, int colOffset) {
+
         StringBuilder messageBuilder = new StringBuilder();
 
-        List<int[]> monsterPositions = identifyMonsters(map);
+        List<int[]> monsterPositions = identifyMonsters(map); // Idetifie les monstres sur la map
         List<MonsterManager> monsters = new ArrayList<>(); // Déclaration d'une liste de monstres
 
         for (int[] position : monsterPositions) {
@@ -38,7 +40,7 @@ public class PlayerManager {
         if (newRow >= 0 && newRow < map.length && newCol >= 0 && newCol < map[0].length) {
             String newSymbol = map[newRow][newCol];
 
-            if (newSymbol.equals(String.valueOf(Constants.EMPTY_SYMBOL))) {
+            if (newSymbol.equals(String.valueOf(EMPTY_SYMBOL))) {
                 // Déplacement sur une case vide
                 map[playerPosition[0]][playerPosition[1]] = String.valueOf(EMPTY_SYMBOL);
                 playerPosition[0] = newRow;
@@ -47,7 +49,7 @@ public class PlayerManager {
             } else if (newSymbol.equals(String.valueOf(MONSTER_SYMBOL))) {
                 // Rencontre avec un monstre
                 loseLife();
-                messageBuilder.append(Constants.MONSTER_ENCOUNTER);
+                setMessage(Constants.MONSTER_ENCOUNTER);
             } else if (newSymbol.equals(String.valueOf(LIFE_SYMBOL))) {
                 // Récupération d'une vie supplémentaire
                 gainLife();
@@ -55,15 +57,15 @@ public class PlayerManager {
                 playerPosition[0] = newRow;
                 playerPosition[1] = newCol;
                 map[playerPosition[0]][playerPosition[1]] = String.valueOf(PLAYER_SYMBOL);
-                messageBuilder.append(EXTRA_LIFE_FOUND);
+                setMessage(EXTRA_LIFE_FOUND);
             } else if (newSymbol.equals(String.valueOf(FLAG_SYMBOL))) {
                 // Atteinte de l'objectif (drapeau)
                 winGame();
             } else {
-                messageBuilder.append(INVALID_MOVE);
+                setErrorMessage(ERROR_INVALID_MOVE, errorMessages);
             }
         } else {
-            messageBuilder.append(OUT_OF_BOUNDS);
+            setErrorMessage(ERROR_OUT_OF_BOUNDS, errorMessages);
         }
 
         // Gérer le déplacement du monstre
@@ -72,7 +74,7 @@ public class PlayerManager {
         }
 
         messages = new String[]{messageBuilder.toString().trim()};
-        printMap(map, messages);
+        printMap(map, messages, errorMessages);
     }
 
     /**
@@ -95,16 +97,17 @@ public class PlayerManager {
         }
 
         if (emptyPositions.isEmpty()) {
-            System.err.println("Erreur : Aucune position valide trouvée sur la première ligne.");
+            setErrorProgramMessage(ERROR_NO_FIRST_POSITION, errorProgramMessages);
             return null;
         }
 
-        // Sélection d'une position aléatoire parmi les positions vides
+        // Sélection d'une position aléatoire parmi les positions vides sur la première ligne
         Random random = new Random();
         int randomIndex = random.nextInt(emptyPositions.size());
         int selectedPosition = emptyPositions.get(randomIndex);
 
         return new int[]{0, selectedPosition};
+        
     }
     
     /**
@@ -113,7 +116,7 @@ public class PlayerManager {
     static void loseLife() {
         Constants.lives--;
         if (Constants.lives <= 0) {
-            System.out.println(LOSE_ALL_LIFES);
+            setErrorMessage(LOSE_ALL_LIVES, errorMessages);
             endGame();
         }
     }
