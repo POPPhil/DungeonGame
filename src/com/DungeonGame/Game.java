@@ -8,6 +8,7 @@ import static com.DungeonGame.Constants.*;
 import static com.DungeonGame.FilesChecker.checkConstantsFile;
 import static com.DungeonGame.PlayerManager.*;
 import static com.DungeonGame.MonsterManager.identifyMonsters;
+import static com.DungeonGame.MessageManager.*;
 import static com.DungeonGame.Printer.*;
 
 public class Game {
@@ -20,7 +21,11 @@ public class Game {
      */
     static void playGame() {
 
-        // Condition qui verifie si le fichier de constant existe.
+        String[] messages = new String[1]; // Variable messages
+        String[] errorMessages = new String[1]; // Variable errorMessages
+        String[] errorProgramMessages = new String[1]; // Variable errorMessages
+
+        // Condition qui vérifie si le fichier de constantes existe.
         if (!checkConstantsFile()) {
             return;
         }
@@ -29,30 +34,28 @@ public class Game {
         File mapFile = new File(MAP_FILE);
 
         if (!mapFile.exists()) {
-            System.err.println(ERROR_NO_MAP_EXIST);
+            setErrorProgramMessage(ERROR_NO_MAP_EXIST, errorProgramMessages);
             return;
         }
 
         String[][] map = FileReader.readMap(mapFile.getPath());
 
         if (map == null) {
-            System.err.println(ERROR_NO_MAP_LOAD);
+            setErrorProgramMessage(ERROR_NO_MAP_LOAD, errorProgramMessages);
             return;
         }
 
         // Étape 2 : Positionner le joueur et le monstre sur la carte
         int[] playerPosition = getStartingPosition(map);
         if (playerPosition == null) {
-            System.err.println(ERROR_NO_FIRST_POSITION);
+            setErrorProgramMessage(ERROR_NO_FIRST_POSITION, errorProgramMessages);
             return;
         }
+
         map[playerPosition[0]][playerPosition[1]] = String.valueOf(PLAYER_SYMBOL);
 
         List<int[]> monsterPositions = identifyMonsters(map);
-        //List<Monster> monsters = new ArrayList<>(); // Ajout de la déclaration de la variable "monsters"
         for (int[] position : monsterPositions) {
-            //Monster monster = new Monster(position);
-            // monsters.add(monster);
             map[position[0]][position[1]] = String.valueOf(MONSTER_SYMBOL);
         }
 
@@ -64,12 +67,12 @@ public class Game {
         try (Scanner scanner = new Scanner(System.in)) {
             boolean gameRunning = true;
             while (gameRunning) {
-                System.out.print(MOVE_LEGEND);
+                setMessage(MOVE_LEGEND);
 
                 String input = scanner.nextLine().toUpperCase();
 
                 if (input.isEmpty()) {
-                    System.err.println(ERROR_NO_INPUT);
+                    setErrorMessage(ERROR_NO_INPUT, errorMessages);
                     continue;
                 }
 
@@ -90,7 +93,7 @@ public class Game {
                         gameRunning = false;
                         break;
                     default:
-                        messages[0] = ERROR_INVALID_INPUT;
+                        setErrorMessage(ERROR_INVALID_INPUT, errorMessages);
                 }
 
                 // clearConsole();
@@ -99,6 +102,5 @@ public class Game {
                 // }
             }
         }
-
     }
 }
