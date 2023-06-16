@@ -113,7 +113,7 @@ public class PlayerManager {
     static void loseLife() {
         Constants.lives--;
         if (Constants.lives <= 0) {
-            System.out.println(LOSE_ALL_LIFES);
+            System.out.println(LOSE_ALL_LIVES);
             endGame();
         }
     }

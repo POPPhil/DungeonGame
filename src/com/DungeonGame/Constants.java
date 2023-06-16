@@ -2,8 +2,15 @@ package com.DungeonGame;
 
 public class Constants {
 
-    // Emplacement des fichiers externes
+    // Emplacement des fichiers necessaire au programme
     public static final String MAP_FILE = "data/map.txt";                                                              // Emplacement du fichier map.txt
+
+    // Constantes pour les messages d'erreur du programme
+    public static final String ERROR_PREFIX = "Erreur : ";							                                    // Préfixe des messages d'erreur
+    public static final String ERROR_NO_MAP_EXIST = "Le fichier de carte n'est pas présent dans le dossier /data !";    // Message qui idique que le fichier map.txt est inexistant 
+    public static final String ERROR_NO_MAP_LOAD = "La carte n'a pas pu être chargée !";                                // Message qui idique que le fichier map.txt n'est pas chargé 
+
+    public static String[] errorProgramMessages = {""};                                                                        // Ajout de la variable pour les message d'erreur
 
     // Symboles de la carte
     public static final char EMPTY_SYMBOL = ' ';                                                                       // Symbole pour une case vide
@@ -44,7 +51,7 @@ public class Constants {
     public static final String MONSTER_ENCOUNTER = "Vous avez rencontré un monstre. Vous perdez une vie !";             // Message de rencontre de monstre
     public static final String EXTRA_LIFE_FOUND = "Vous avez trouvé une vie supplémentaire !";                          // Message de vie supplémentaire
     public static final String SEPARATION_LINE = "\n==============================\n";                                  // Ligne de sépération
-    public static final String LOSE_ALL_LIFES = "\nVous avez perdu toutes vos vies !";                                  // Message de perte de toutes les vies
+    public static final String LOSE_ALL_LIVES = "\nVous avez perdu toutes vos vies !";                                  // Message de perte de toutes les vies
     public static final String WIN_TEXT = "\n========= Félicitations ! ========" +
             "\n\n" +
             "Vous avez atteint le drapeau et gagné le jeu !";                                                           // Message de victoire
@@ -52,17 +59,7 @@ public class Constants {
 
     public static String[] messages = {""};                                                                             // Ajout de la variable vide pour les message
 
-    /* public static final String[] messages = {
-    	MONSTER_ENCOUNTER,
-        EXTRA_LIFE_FOUND,
-        SEPARATION_LINE,
-        LOSE_ALL_LIFES,
-        WIN_TEXT,
-        END_GAME
-    }; */
-
-    // Constantes pour les messages d'erreur du jeu
-    public static final String ERROR_PREFIX = "Erreur : ";							        // Préfixe des messages d'erreur
+    // Constantes pour les messages d'erreur de pré-chargement du programme
     public static final String ERROR_NO_FIRST_POSITION = "Aucune position valide trouvée sur la première ligne !";      // Message de position sur la première ligne ivalide 
     public static final String ERROR_INVALID_MOVE = "Vous ne pouvez pas vous déplacer ici !";                           // Message de déplacement non autorisé 
     public static final String ERROR_OUT_OF_BOUNDS = "Vous ne pouvez pas sortir de la carte !";                         // Message de sortie de carte non autorisée
@@ -71,12 +68,4 @@ public class Constants {
 
     public static String[] errorMessages = {""};                                                                        // Ajout de la variable pour les message d'erreur
 
-    /* public static String[] errorMessages = {
-    	ERROR_NO_INPUT,
-        INVALID_MOVE,
-        OUT_OF_BOUNDS,
-    	ERROR_INVALID_INPUT
-    }; */
-
 }
-

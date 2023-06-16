@@ -29,21 +29,21 @@ public class Game {
         File mapFile = new File(MAP_FILE);
 
         if (!mapFile.exists()) {
-            System.err.println("Erreur : Le fichier de carte n'est pas présent dans le dossier /data.");
+            System.err.println(ERROR_NO_MAP_EXIST);
             return;
         }
 
         String[][] map = FileReader.readMap(mapFile.getPath());
 
         if (map == null) {
-            System.err.println("Erreur : La carte n'a pas pu être chargée.");
+            System.err.println(ERROR_NO_MAP_LOAD);
             return;
         }
 
         // Étape 2 : Positionner le joueur et le monstre sur la carte
         int[] playerPosition = getStartingPosition(map);
         if (playerPosition == null) {
-            System.err.println("Erreur : Impossible de trouver une position valide pour le personnage sur la première ligne.");
+            System.err.println(ERROR_NO_FIRST_POSITION);
             return;
         }
         map[playerPosition[0]][playerPosition[1]] = String.valueOf(PLAYER_SYMBOL);
@@ -94,9 +94,9 @@ public class Game {
                 }
 
                 // clearConsole();
-                if (gameRunning) {
-                    printMap(map, messages, errorMessages);
-                }
+                // if (gameRunning) {
+                //     printMap(map, messages, errorMessages);
+                // }
             }
         }
 
