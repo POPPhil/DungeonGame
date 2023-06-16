@@ -1,6 +1,7 @@
 package com.DungeonGame;
 
 import static com.DungeonGame.Constants.*;
+import static com.DungeonGame.MessageManagers.*;
 
 public class Printer {
 
