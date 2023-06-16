@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import static com.DungeonGame.Constants.*;
-import static com.DungeonGame.FilesChecker.checkConstantsFile;
+import static com.DungeonGame.FilesChecker.checkClassFiles;
 import static com.DungeonGame.PlayerManager.*;
 import static com.DungeonGame.MonsterManager.identifyMonsters;
 import static com.DungeonGame.MessageManager.*;
@@ -25,8 +25,8 @@ public class Game {
         String[] errorMessages = new String[1]; // Variable errorMessages
         String[] errorProgramMessages = new String[1]; // Variable errorMessages
 
-        // Condition qui vérifie si le fichier de constantes existe.
-        if (!checkConstantsFile()) {
+        // Condition qui vérifie si les fichiers de constantes existe.
+        if (!checkClassFiles()) {
             return;
         }
 
