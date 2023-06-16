@@ -25,7 +25,7 @@ public class Printer {
         System.out.println(SEPARATION_LINE);
     }
 
-    // Affichage des messages
+    // Affichage des messages et des messages d'erreur
     static void printMessages(String[] messages, String[] errorMessages) {
         for (String message : messages) {
             if (message != null && !message.isEmpty()) {

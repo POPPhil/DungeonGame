@@ -95,7 +95,7 @@ public class PlayerManager {
         }
 
         if (emptyPositions.isEmpty()) {
-            System.err.println("Erreur : Aucune position valide trouvée sur la première ligne.");
+            System.err.println(ERROR_NO_FIRST_POSITION);
             return null;
         }
 
