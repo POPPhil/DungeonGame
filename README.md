@@ -22,7 +22,7 @@ Le jeu consiste à déplacer un personnage dans un donjon pour atteindre un drap
 ``javac src/com/DungeonGame/Constants.java src/com/DungeonGame/FileReader.java src/com/DungeonGame/FilesChecker.java src/com/DungeonGame/Game.java src/com/DungeonGame/GameStatus.java src/com/DungeonGame/Main.java src/com/DungeonGame/MessageManager.java src/com/DungeonGame/MonsterManager.java src/com/DungeonGame/PlayerManager.java src/com/DungeonGame/Printer.java``
 ou 
 ``javac src/com/DungeonGame/*``
-Selon votre environement.
+selon votre environement.
 4. Exécutez le jeu en utilisant la commande suivante :
 ``java -cp src com.DungeonGame.Main``
 

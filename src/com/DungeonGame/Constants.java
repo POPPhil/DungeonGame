@@ -3,7 +3,7 @@ package com.DungeonGame;
 public class Constants {
 
     // Emplacement des fichiers necessaire au programme
-    public static final String MAP_FILE = "data/map.txt";                                                              // Emplacement du fichier map.txt
+    public static final String MAP_FILE = "data/map.txt";                                                               // Emplacement du fichier map.txt
 
     // costantes génériques 
     public static final String ERROR_SEPARATION_LINE = "\n\n==============================\n\n";                        // Ligne de sépération
@@ -65,14 +65,18 @@ public class Constants {
     public static final String WARNING_NO_INPUT = "Aucune entrée détectée !";                                              // Message si aucune entrée n'est détectée dans l'input
     public static final String WARNING_INVALID_INPUT = "Entrée invalide !";                                             // Message d'entrée invalide
 
-    public static final String RED_COLOR;                                                                               // Constante vide pour la couleur rouge
+    public static final String RED_COLOR = "\u001B[31m";                                                                // Code ANSI pour la couleur rouge
+    public static final String GREEN_COLOR = "\u001B[32m";                                                              // Code ANSI pour la couleur rouge
+    public static final String RESET_COLOR = "\u001B[0m";                                                               // Code ANSI pour réinitialiser la couleur
+    
+    /* public static final String RED_COLOR;                                                                               // Constante vide pour la couleur rouge
     public static final String GREEN_COLOR;                                                                             // Constante vide pour la couleur verte
     public static final String RESET_COLOR;                                                                             // Constante vide pour réinitialiser la couleur
 
     // Condition qui charge le code pour la gestion de la couleur en fonction de l'OS
     static {
         String os = System.getProperty("os.name").toLowerCase();
-        if (os.contains("win")) {
+        if (os.contains("Windows")) {
             RED_COLOR = "cmd /c color 0C";                                                                              // Commande Windows pour la couleur rouge
             GREEN_COLOR = "cmd /c color 0A";                                                                            // Commande Windows pour la couleur rouge
             RESET_COLOR = "cmd /c color";                                                                               // Commande Windows pour réinitialiser la couleur
@@ -81,5 +85,5 @@ public class Constants {
             GREEN_COLOR = "\u001B[32m";                                                                                 // Code ANSI pour la couleur verte
             RESET_COLOR = "\u001B[0m";                                                                                  // Code ANSI pour réinitialiser la couleur
         }
-    }                                                  
+    } */                                                  
 }
