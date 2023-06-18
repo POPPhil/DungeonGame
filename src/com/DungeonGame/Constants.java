@@ -69,7 +69,7 @@ public class Constants {
     public static final String GREEN_COLOR;                                                                             // Constante vide pour la couleur verte
     public static final String RESET_COLOR;                                                                             // Constante vide pour réinitialiser la couleur
 
-    // Condifiton qui charge le code pour la gestion de la couleur en fonction de l'OS
+    // Condition qui charge le code pour la gestion de la couleur en fonction de l'OS
     static {
         String os = System.getProperty("os.name").toLowerCase();
         if (os.contains("win")) {
