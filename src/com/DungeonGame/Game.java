@@ -13,6 +13,8 @@ import static com.DungeonGame.Printer.*;
 
 public class Game {
 
+    private static MessageManager messageManager = new MessageManager();
+
     /**
      * Lance le jeu en effectuant les étapes suivantes :
      * 1. Charge la carte depuis un fichier.
@@ -20,10 +22,6 @@ public class Game {
      * 3. Affiche la carte et demande les mouvements à l'utilisateur.
      */
     static void playGame() {
-
-        String[] messages = new String[1]; // Variable messages
-        String[] errorMessages = new String[1]; // Variable errorMessages
-        String[] errorProgramMessages = new String[1]; // Variable errorMessages
 
         // Condition qui vérifie si les fichiers de constantes existe.
         if (!checkClassFiles()) {
@@ -34,21 +32,21 @@ public class Game {
         File mapFile = new File(MAP_FILE);
 
         if (!mapFile.exists()) {
-            setErrorProgramMessage(ERROR_NO_MAP_EXIST, errorProgramMessages);
+            messageManager.setErrorProgramMessage(ERROR_NO_MAP_EXIST);
             return;
         }
 
         String[][] map = FileReader.readMap(mapFile.getPath());
 
         if (map == null) {
-            setErrorProgramMessage(ERROR_NO_MAP_LOAD, errorProgramMessages);
+            messageManager.setErrorProgramMessage(ERROR_NO_MAP_LOAD);
             return;
         }
 
         // Étape 2 : Positionner le joueur et le monstre sur la carte
         int[] playerPosition = getStartingPosition(map);
         if (playerPosition == null) {
-            setErrorProgramMessage(ERROR_NO_FIRST_POSITION, errorProgramMessages);
+            messageManager.setErrorProgramMessage(ERROR_NO_FIRST_POSITION);
             return;
         }
 
@@ -62,43 +60,42 @@ public class Game {
         // Étape 3 : Afficher la carte et demander les mouvements à l'utilisateur
         printLegend();
 
-        printMap(map, messages, errorMessages);
+        printMap(map, messageManager);
 
         try (Scanner scanner = new Scanner(System.in)) {
             boolean gameRunning = true;
             while (gameRunning) {
-                setMessage(MOVE_LEGEND);
 
                 String input = scanner.nextLine().toUpperCase();
 
                 if (input.isEmpty()) {
-                    setErrorMessage(ERROR_NO_INPUT, errorMessages);
+                    messageManager.setWarningMessage(WARNING_NO_INPUT);
                     continue;
                 }
 
                 switch (input) {
-                    case Constants.MOVE_UP:
+                    case MOVE_UP:
                         movePlayer(map, playerPosition, -1, 0);
                         break;
-                    case Constants.MOVE_DOWN:
+                    case MOVE_DOWN:
                         movePlayer(map, playerPosition, 1, 0);
                         break;
-                    case Constants.MOVE_LEFT:
+                    case MOVE_LEFT:
                         movePlayer(map, playerPosition, 0, -1);
                         break;
-                    case Constants.MOVE_RIGHT:
+                    case MOVE_RIGHT:
                         movePlayer(map, playerPosition, 0, 1);
                         break;
-                    case Constants.QUIT_GAME:
+                    case QUIT_GAME:
                         gameRunning = false;
                         break;
                     default:
-                        setErrorMessage(ERROR_INVALID_INPUT, errorMessages);
+                        messageManager.setWarningMessage(WARNING_INVALID_INPUT);
                 }
 
                 // clearConsole();
                 // if (gameRunning) {
-                //     printMap(map, messages, errorMessages);
+                //     printMap(map, messages, warningMessages);
                 // }
             }
         }
