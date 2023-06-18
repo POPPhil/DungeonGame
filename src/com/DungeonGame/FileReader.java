@@ -12,31 +12,36 @@ public class FileReader {
      * @return un tableau 2D représentant la carte.
      */
     static String[][] readMap(String filename) {
-        String[][] map = null;
+        String[][] map = null; // Déclaration du tableau de la carte, initialisé à null
+
         try (BufferedReader reader = new BufferedReader(new java.io.FileReader(filename))) {
-            List<String> lines = new ArrayList<>();
+            // Création d'un BufferedReader pour lire le fichier
+            // Le try-with-resources est utilisé pour s'assurer que le BufferedReader est correctement fermé
+
+            List<String> lines = new ArrayList<>(); // Création d'une liste pour stocker les lignes du fichier
             String line;
 
-            // Lire chaque ligne du fichier
+            // Lis chaque ligne du fichier
             while ((line = reader.readLine()) != null) {
-                lines.add(line);
+                lines.add(line); // Ajouter la ligne à la liste
             }
 
-            int rowCount = lines.size();
-            int colCount = lines.get(0).length();
+            int rowCount = lines.size(); // Nombre de lignes de la carte (taille de la liste)
+            int colCount = lines.get(0).length(); // Nombre de colonnes de la carte (longueur de la première ligne)
 
-            map = new String[rowCount][colCount];
+            map = new String[rowCount][colCount]; // Création du tableau de la carte avec les dimensions appropriées
 
-            // Remplir le tableau de la carte avec les symboles de chaque case
+            // Remplis le tableau de la carte avec les symboles de chaque case
             for (int rowIndex = 0; rowIndex < rowCount; rowIndex++) {
-                line = lines.get(rowIndex);
+                line = lines.get(rowIndex); // Récupére la ligne correspondante
                 for (int colIndex = 0; colIndex < colCount; colIndex++) {
-                    map[rowIndex][colIndex] = String.valueOf(line.charAt(colIndex));
+                    map[rowIndex][colIndex] = String.valueOf(line.charAt(colIndex)); // Récupére le symbole de chaque case et le stocke dans le tableau
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // En cas d'erreur lors de la lecture du fichier, afficher la trace de l'exception
         }
-        return map;
+
+        return map; // Retourne le tableau de la carte
     }
 }
