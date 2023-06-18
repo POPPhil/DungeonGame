@@ -1,7 +1,5 @@
 package com.DungeonGame;
 
-import static com.DungeonGame.Constants.*;
-
 public class MessageManager {
 
     private String errorProgramMessage; // Variable pour stocker le message d'erreur du programme

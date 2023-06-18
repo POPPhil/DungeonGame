@@ -1,7 +1,6 @@
 package com.DungeonGame;
 
 import static com.DungeonGame.Constants.*;
-import static com.DungeonGame.MessageManagers.*;
 
 public class Printer {
 
@@ -51,8 +50,10 @@ public class Printer {
         // Afficher les messages du jeu
         printGameMessages(messageManager);
 
+        // Afficher une ligne de séparation
         System.out.println(SEPARATION_LINE);
 
+        // Afficher la légende de déplacement du jeu
         System.out.println(MOVE_LEGEND);
     }
 
@@ -60,18 +61,23 @@ public class Printer {
     static void printGameMessages(MessageManager messageManager) {
         // Récupérer le message d'information du MessageManager
         String infoMessage = messageManager.getInfoMessage();
+        // Récupérer le message d'avertissement du MessageManager
+        String warningMessage = messageManager.getWarningMessage();
+
         // Vérifier si le message d'information existe et n'est pas vide
         if (infoMessage != null && !infoMessage.isEmpty()) {
             // Afficher le message d'information
-            System.out.println(infoMessage);
+            System.out.println(GREEN_COLOR + infoMessage + RESET_COLOR);
+            // Réinitialiser le message d'information à vide
+            messageManager.setInfoMessage("");
         }
 
-        // Récupérer le message d'avertissement du MessageManager
-        String warningMessage = messageManager.getWarningMessage();
         // Vérifier si le message d'avertissement existe et n'est pas vide
         if (warningMessage != null && !warningMessage.isEmpty()) {
             // Afficher le message d'avertissement en utilisant la couleur rouge pour l'erreur
             System.out.println(RED_COLOR + ERROR_PREFIX + warningMessage + RESET_COLOR);
+            // Réinitialiser le message d'avertissement à vide
+            messageManager.setWarningMessage("");
         }
     }
 }
