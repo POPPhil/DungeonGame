@@ -8,7 +8,7 @@ public class GameStatus {
      * Affiche un message de victoire et termine le jeu.
      */
     static void winGame() {
-        System.out.println(WIN_TEXT);
+        System.out.println(GREEN_COLOR + WIN_TEXT + RESET_COLOR);
         endGame();
     }
 
@@ -16,7 +16,7 @@ public class GameStatus {
      * Affiche un message de fin et termine le jeu.
      */
     static void endGame() {
-        System.out.println(END_GAME);
+        System.out.println(RED_COLOR + END_GAME + RESET_COLOR);
         System.exit(0);
     }
 }

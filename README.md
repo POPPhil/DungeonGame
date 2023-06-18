@@ -6,10 +6,10 @@ Le jeu consiste à déplacer un personnage dans un donjon pour atteindre un drap
 
 ## Règles du jeu
 
-- Le joueur est représenté par le symbole ♛ sur la carte.
-- Le drapeau est représenté par le symbole ₱ sur la carte. L'objectif du joueur est d'atteindre le drapeau.
-- Les monstres sont représentés par le symbole ♘ sur la carte, il se déplacent dans une ecrtaine zone et ne peuvent pas en sortir. Si le joueur en touche un, il perd une vie.
-- Les vies supplémentaires sont représentées par le symbole ☯ sur la carte. Le joueur peu en cumuler autant que possible.
+- Le joueur est représenté par le symbole Y sur la carte.
+- Le drapeau est représenté par le symbole P sur la carte. L'objectif du joueur est d'atteindre le drapeau.
+- Les monstres sont représentés par le symbole M sur la carte, il se déplacent dans une ecrtaine zone et ne peuvent pas en sortir. Si le joueur en touche un, il perd une vie.
+- Les vies supplémentaires sont représentées par le symbole o sur la carte. Le joueur peu en cumuler autant que possible.
 - Le joueur commence avec 3 vies, et perd le jeu s'il les perd toutes.
 - Le joueur peut se déplacer dans les quatre directions : Nord (Z), Sud (S), Ouest (Q) et Est (D).
 - Le joueur peut quitter le jeu à tout moment en appuyant sur la touche X.

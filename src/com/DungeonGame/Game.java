@@ -28,7 +28,7 @@ public class Game {
             return; // Arrête le jeu si les fichiers de constantes sont manquants
         }
 
-        // Étape 1 : Charger la carte depuis un fichier
+        // Étape 1 : Charge la carte depuis un fichier
         File mapFile = new File(MAP_FILE);
 
         // Condition qui vérifie si le fichier map.txt existe.
@@ -37,9 +37,9 @@ public class Game {
             return; // Arrête le jeu si le fichier de la carte n'existe pas
         }
 
-        String[][] map = FileReader.readMap(mapFile.getPath());
+        String[][] map = FileReader.readMap(mapFile.getPath()); // Charge la carte du jeu à partir du fichier spécifié
 
-        // Condition qui vérifie si le fichier map.txt peu être chargée.
+        // Condition qui vérifie si le fichier map.txt peut être chargé.
         if (map == null) {
             messageManager.setErrorProgramMessage(ERROR_NO_MAP_LOAD);
             return; // Arrête le jeu si la carte ne peut pas être chargée
@@ -53,10 +53,15 @@ public class Game {
             return; // Arrête le jeu si la position de départ du joueur n'est pas trouvée
         }
 
+        // Positionne le joueur sur la carte en utilisant les coordonnées de la position de départ
         map[playerPosition[0]][playerPosition[1]] = String.valueOf(PLAYER_SYMBOL);
 
+        // Identifie les positions des monstres sur la carte en utilisant la méthode identifyMonsters()
         List<int[]> monsterPositions = identifyMonsters(map);
+
+        // Parcours la liste des positions des monstres
         for (int[] position : monsterPositions) {
+            // Positionne un monstre sur la carte en utilisant les coordonnées de chaque position
             map[position[0]][position[1]] = String.valueOf(MONSTER_SYMBOL);
         }
 
@@ -65,16 +70,20 @@ public class Game {
 
         printMap(map, messageManager); // Affiche la carte et les messages du jeu
 
+        // Crée une instance de Scanner pour lire l'entrée utilisateur à partir de la console
         try (Scanner scanner = new Scanner(System.in)) {
-            boolean gameRunning = true;
-            while (gameRunning) {
+            boolean gameRunning = true; // Initialise la variable gameRunning à true pour que le jeu puisse commencer
 
-                String input = scanner.nextLine().toUpperCase();
+            // Boucle principale du jeu qui s'exécute tant que gameRunning est true
+            while (gameRunning) { 
+                
+                String input = scanner.nextLine().toUpperCase(); // Lit la prochaine ligne de l'entrée utilisateur et la convertit en majuscules et stocke la valeur dans la variable 'input' pour représenter l'action saisie par l'utilisateur
 
+                // Vérifie si l'entrée de l'utilisateur est vide
                 if (input.isEmpty()) {
                     messageManager.setWarningMessage(WARNING_NO_INPUT); // Affiche un message si l'entrée est vide
                     printMap(map, messageManager);
-                    continue; // Ignore les mouvements invalides ou vides
+                    continue; // Ignore les mouvements invalides ou vides pour continuer le jeu
                 }
 
                 switch (input) {
@@ -95,7 +104,7 @@ public class Game {
                         break; // Arrête le jeu si l'utilisateur valide la touche X
                     default:
                         messageManager.setWarningMessage(WARNING_INVALID_INPUT); // Affiche un message si l'entrée n'est pas celle attendue
-                        printMap(map, messageManager);
+                        printMap(map, messageManager); // Affiche la carte à nouveau avec les éventuels messages mis à jour
                 }
             }
         }
