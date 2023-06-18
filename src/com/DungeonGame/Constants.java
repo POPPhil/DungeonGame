@@ -14,7 +14,7 @@ public class Constants {
     public static final String ERROR_NO_MAP_LOAD = "La carte n'a pas pu être chargée !";                                // Message qui idique que le fichier map.txt n'est pas chargé
     public static final String ERROR_NO_FIRST_POSITION = "Aucune position valide trouvée sur la première ligne !";      // Message de position sur la première ligne ivalide  
 
-    public static String[] errorProgramMessages = {""};                                                                 // Ajout de la variable pour les message d'erreur
+    // public static String[] errorProgramMessages = {""};                                                                 // Ajout de la variable pour les message d'erreur
 
     // Symboles de la carte
     public static final char EMPTY_SYMBOL = ' ';                                                                        // Symbole pour une case vide
@@ -52,26 +52,27 @@ public class Constants {
             "Utilisez les touches suivantes, (Z: Haut, S: Bas, Q: Gauche, D: Droite, X: Quitter) : ";                   // Légende des mouvements et actions possibles
 
     // Constantes pour les messages d'info du jeu
-    public static final String MONSTER_ENCOUNTER = "Vous avez rencontré un monstre. Vous perdez une vie !";             // Message de rencontre de monstre
     public static final String EXTRA_LIFE_FOUND = "Vous avez trouvé une vie supplémentaire !";                          // Message de vie supplémentaire
     public static final String SEPARATION_LINE = "\n==============================\n";                                  // Ligne de sépération
-    public static final String LOSE_ALL_LIVES = "\nVous avez perdu toutes vos vies !";                                  // Message de perte de toutes les vies
     public static final String WIN_TEXT = "\n========= Félicitations ! ========" +
             "\n\n" +
             "Vous avez atteint le drapeau et gagné le jeu !";                                                           // Message de victoire
     public static final String END_GAME = "\n=========== Fin du jeu ===========\n";                                     // Message de fin de jeu
 
-    public static String[] messages = {""};                                                                             // Ajout de la variable vide pour les message
+    // public static String[] messages = {""};                                                                              // Ajout de la variable vide pour les message
 
-    // Constantes pour les messages d'erreur du jeu
-    public static final String ERROR_INVALID_MOVE = "Vous ne pouvez pas vous déplacer ici !";                           // Message de déplacement non autorisé 
-    public static final String ERROR_OUT_OF_BOUNDS = "Vous ne pouvez pas sortir de la carte !";                         // Message de sortie de carte non autorisée
-    public static final String ERROR_NO_INPUT = "Aucune entrée détectée !";                                             // Message si aucune entrée n'est détectée dans l'input
-    public static final String ERROR_INVALID_INPUT = "Entrée invalide !";                                               // Message d'entrée invalide
+    // Constantes pour les messages d'avertissement du jeu
+    public static final String WARNING_MONSTER_ENCOUNTER = "Vous avez rencontré un monstre. Vous perdez une vie !";     // Message de rencontre de monstre
+    public static final String WARNING_LOSE_ALL_LIVES = "\nVous avez perdu toutes vos vies !";                          // Message de perte de toutes les vies
+    public static final String WARNING_INVALID_MOVE = "Vous ne pouvez pas vous déplacer ici !";                         // Message de déplacement non autorisé 
+    public static final String WARNING_OUT_OF_BOUNDS = "Vous ne pouvez pas sortir de la carte !";                       // Message de sortie de carte non autorisée
+    public static final String WARNING_NO_INPUT = "Aucune entrée détectée !";                                              // Message si aucune entrée n'est détectée dans l'input
+    public static final String WARNING_INVALID_INPUT = "Entrée invalide !";                                             // Message d'entrée invalide
 
-    public static String[] errorMessages = {""};                                                                        // Ajout de la variable pour les message d'erreur
+    // public static String[] warningMessages = {""};                                                                        // Ajout de la variable pour les message d'avertissement
 
-    public static final String RED_COLOR = "\u001B[31m";                                                                // Code ANSI pour la couleur rouge
-    public static final String RESET_COLOR = "\u001B[0m";                                                               // Code ANSI pour réinitialiser la couleur
+    public static final String RED_COLOR = "\u001B[31m";                                                                 // Code ANSI pour la couleur rouge
+    public static final String GREEN_COLOR = "\u001B[32m";                                                               // Code ANSI pour la couleur rouge
+    public static final String RESET_COLOR = "\u001B[0m";                                                                // Code ANSI pour réinitialiser la couleur
 
 }

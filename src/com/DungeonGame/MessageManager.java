@@ -1,26 +1,64 @@
 package com.DungeonGame;
 
 import static com.DungeonGame.Constants.*;
-import static com.DungeonGame.Printer.*;
 
 public class MessageManager {
 
-    StringBuilder messageBuilder = new StringBuilder();
+    private String errorProgramMessage; // Variable pour stocker le message d'erreur du programme
+    private String infoMessage; // Variable pour stocker le message d'information du jeu
+    private String warningMessage; // Variable pour stocker le message d'avertissement du jeu
 
-    // Charge les messages d'erreur du programme
-    public static void setErrorProgramMessage(String errorProgramMessage, String[] errorProgramMessages) {
-        System.err.println(ERROR_SEPARATION_LINE + ERROR_PREFIX + errorProgramMessage + ERROR_SEPARATION_LINE);
-        errorProgramMessages[0] = errorProgramMessage;
+    /**
+     * Obtient le message d'erreur du programme.
+     *
+     * @return Le message d'erreur du programme.
+     */
+    public String getErrorProgramMessage() {
+        return errorProgramMessage != null ? errorProgramMessage : ""; // Renvoie le message d'erreur du programme s'il existe, sinon renvoie une chaîne vide
     }
 
-    // Charge les messages d'erreur du jeu
-    public static void setErrorMessage(String errorMessages, String[] messages) {
-        messages[0] = errorMessages;
-        printErrorMessage(ERROR_SEPARATION_LINE + ERROR_PREFIX + errorMessages + ERROR_SEPARATION_LINE);
+    /**
+     * Obtient le message d'information du jeu.
+     *
+     * @return Le message d'information du jeu.
+     */
+    public String getInfoMessage() {
+        return infoMessage != null ? infoMessage : ""; // Renvoie le message d'information s'il existe, sinon renvoie une chaîne vide
     }
 
-    // Charge les messages d'info du jeu
-    public static void setMessage(String messages) {
-        System.err.println(messages);
+    /**
+     * Obtient le message d'avertissement du jeu.
+     *
+     * @return Le message d'avertissement du jeu.
+     */
+    public String getWarningMessage() {
+        return warningMessage != null ? warningMessage : ""; // Renvoie le message d'avertissement du jeu s'il existe, sinon renvoie une chaîne vide
+    }
+
+    /**
+     * Définit le message d'erreur du programme.
+     *
+     * @param errorProgramMessage Le message d'erreur du programme.
+     */
+    public void setErrorProgramMessage(String errorProgramMessage) {
+        this.errorProgramMessage = errorProgramMessage; // Définit le message d'erreur du programme avec la valeur spécifiée
+    }
+
+    /**
+     * Définit le message d'information du jeu.
+     *
+     * @param infoMessage Le message d'information du jeu.
+     */
+    public void setInfoMessage(String infoMessage) {
+        this.infoMessage = infoMessage; // Définit le message d'information du jeu avec la valeur spécifiée
+    }
+
+    /**
+     * Définit le message d'avertissement du jeu.
+     *
+     * @param warningMessage Le message d'avertissement du jeu.
+     */
+    public void setWarningMessage(String warningMessage) {
+        this.warningMessage = warningMessage; // Définit le message d'avertissement du jeu avec la valeur spécifiée
     }
 }

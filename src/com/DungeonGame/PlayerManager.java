@@ -11,6 +11,8 @@ import static com.DungeonGame.MonsterManager.*;
 import static com.DungeonGame.MessageManager.*;
 
 public class PlayerManager {
+    private static MessageManager messageManager = new MessageManager();
+
     /**
      * Déplace le joueur sur la carte en mettant à jour les positions et les symboles correspondants.
      *
@@ -20,8 +22,6 @@ public class PlayerManager {
      * @param colOffset      la valeur de décalage pour la colonne.
      */
     static void movePlayer(String[][] map, int[] playerPosition, int rowOffset, int colOffset) {
-
-        StringBuilder messageBuilder = new StringBuilder();
 
         List<int[]> monsterPositions = identifyMonsters(map); // Idetifie les monstres sur la map
         List<MonsterManager> monsters = new ArrayList<>(); // Déclaration d'une liste de monstres
@@ -49,7 +49,7 @@ public class PlayerManager {
             } else if (newSymbol.equals(String.valueOf(MONSTER_SYMBOL))) {
                 // Rencontre avec un monstre
                 loseLife();
-                setMessage(Constants.MONSTER_ENCOUNTER);
+                messageManager.setWarningMessage(WARNING_MONSTER_ENCOUNTER);
             } else if (newSymbol.equals(String.valueOf(LIFE_SYMBOL))) {
                 // Récupération d'une vie supplémentaire
                 gainLife();
@@ -57,15 +57,15 @@ public class PlayerManager {
                 playerPosition[0] = newRow;
                 playerPosition[1] = newCol;
                 map[playerPosition[0]][playerPosition[1]] = String.valueOf(PLAYER_SYMBOL);
-                setMessage(EXTRA_LIFE_FOUND);
+                messageManager.setInfoMessage(EXTRA_LIFE_FOUND);
             } else if (newSymbol.equals(String.valueOf(FLAG_SYMBOL))) {
                 // Atteinte de l'objectif (drapeau)
                 winGame();
             } else {
-                setErrorMessage(ERROR_INVALID_MOVE, errorMessages);
+                messageManager.setWarningMessage(WARNING_INVALID_MOVE);
             }
         } else {
-            setErrorMessage(ERROR_OUT_OF_BOUNDS, errorMessages);
+            messageManager.setWarningMessage(WARNING_OUT_OF_BOUNDS);
         }
 
         // Gérer le déplacement du monstre
@@ -73,8 +73,7 @@ public class PlayerManager {
             monster.move(map);
         }
 
-        messages = new String[]{messageBuilder.toString().trim()};
-        printMap(map, messages, errorMessages);
+        printMap(map, messageManager);
     }
 
     /**
@@ -97,7 +96,7 @@ public class PlayerManager {
         }
 
         if (emptyPositions.isEmpty()) {
-            setErrorProgramMessage(ERROR_NO_FIRST_POSITION, errorProgramMessages);
+            messageManager.setErrorProgramMessage(ERROR_NO_FIRST_POSITION);
             return null;
         }
 
@@ -116,7 +115,7 @@ public class PlayerManager {
     static void loseLife() {
         Constants.lives--;
         if (Constants.lives <= 0) {
-            setErrorMessage(LOSE_ALL_LIVES, errorMessages);
+            messageManager.setWarningMessage(WARNING_LOSE_ALL_LIVES);
             endGame();
         }
     }
