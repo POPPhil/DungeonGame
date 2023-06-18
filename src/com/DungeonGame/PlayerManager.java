@@ -8,7 +8,6 @@ import static com.DungeonGame.Constants.*;
 import static com.DungeonGame.GameStatus.*;
 import static com.DungeonGame.Printer.*;
 import static com.DungeonGame.MonsterManager.*;
-import static com.DungeonGame.MessageManager.*;
 
 public class PlayerManager {
     private static MessageManager messageManager = new MessageManager();
