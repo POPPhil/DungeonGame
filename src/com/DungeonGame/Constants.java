@@ -66,7 +66,9 @@ public class Constants {
     public static final String WARNING_INVALID_INPUT = "Entrée invalide !";                                             // Message d'entrée invalide
 
     public static final String RED_COLOR = "\u001B[31m";                                                                // Code ANSI pour la couleur rouge
-    public static final String GREEN_COLOR = "\u001B[32m";                                                              // Code ANSI pour la couleur rouge
+    public static final String GREEN_COLOR = "\u001B[32m";                                                              // Code ANSI pour la couleur verte
+    public static final String YELLOW_COLOR = "\u001B[33m";                                                             // Code ANSI pour la couleur jaune
+    public static final String BLUE_COLOR = "\u001B[34m";                                                               // Code ANSI pour la couleur bleue
     public static final String RESET_COLOR = "\u001B[0m";                                                               // Code ANSI pour réinitialiser la couleur
     
     /* public static final String RED_COLOR;                                                                               // Constante vide pour la couleur rouge
