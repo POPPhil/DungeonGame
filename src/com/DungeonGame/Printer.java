@@ -9,7 +9,7 @@ public class Printer {
     /**
      * Efface l'écran de la console.
      */
-    public static void clearConsole() {
+    /* public static void clearConsole() {
         try {
             // Obtient le nom du système d'exploitation
             final String os = System.getProperty("os.name");
@@ -26,7 +26,7 @@ public class Printer {
             // Affiche la trace d'erreur en cas d'exception
             e.printStackTrace();
         }
-    }
+    } */
 
     /**
      * Affiche les messages d'erreur du programme avant son lancement.

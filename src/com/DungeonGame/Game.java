@@ -23,15 +23,15 @@ public class Game {
      */
     static void playGame() {
 
-        // Condition qui vérifie si les fichiers de constantes existent.
+        // Condition qui vérifie si les fichiers de classes existent
         if (!checkClassFiles()) {
-            return; // Arrête le jeu si les fichiers de constantes sont manquants
+            return; // Arrête le jeu si les fichiers de classes sont manquants
         }
 
         // Étape 1 : Charge la carte depuis un fichier
         File mapFile = new File(MAP_FILE);
 
-        // Condition qui vérifie si le fichier map.txt existe.
+        // Condition qui vérifie si le fichier map.txt existe
         if (!mapFile.exists()) {
             messageManager.setErrorProgramMessage(ERROR_NO_MAP_EXIST);
             return; // Arrête le jeu si le fichier de la carte n'existe pas
@@ -39,7 +39,7 @@ public class Game {
 
         String[][] map = FileReader.readMap(mapFile.getPath()); // Charge la carte du jeu à partir du fichier spécifié
 
-        // Condition qui vérifie si le fichier map.txt peut être chargé.
+        // Condition qui vérifie si le fichier map.txt peut être chargé
         if (map == null) {
             messageManager.setErrorProgramMessage(ERROR_NO_MAP_LOAD);
             return; // Arrête le jeu si la carte ne peut pas être chargée
@@ -47,7 +47,7 @@ public class Game {
 
         // Étape 2 : Positionner le joueur et le monstre sur la carte
         int[] playerPosition = getStartingPosition(map);
-        // Condition qui vérifie si la position de départ du joueur est valide.
+        // Condition qui vérifie si la position de départ du joueur est valide
         if (playerPosition == null) {
             messageManager.setErrorProgramMessage(ERROR_NO_FIRST_POSITION);
             return; // Arrête le jeu si la position de départ du joueur n'est pas trouvée
