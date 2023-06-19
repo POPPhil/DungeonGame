@@ -11,7 +11,7 @@ public class FilesChecker {
     static boolean checkClassFiles() {
         String packageDirectory = "/com/DungeonGame"; // Répertoire du package contenant les fichiers de classes
 
-        String[] classNames = {"Constants", "FileReader", "Game", "GameStatus", "MessageManager", "MonsterManager", "PlayerManager", "Printer"}; // Liste des noms des classes à vérifier
+        String[] classNames = {"Constants", "FileReader", "GameStatus", "MessageManager", "MonsterManager", "PlayerManager", "Printer"}; // Liste des noms des classes à vérifier
 
         for (String className : classNames) {
             String classFilePath = packageDirectory + "/" + className + ".class"; // Chemin du fichier de classe

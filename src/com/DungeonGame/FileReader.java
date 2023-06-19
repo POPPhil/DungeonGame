@@ -7,9 +7,9 @@ import java.util.List;
 
 public class FileReader {
     /**
-     * Charge la carte à partir d'un fichier.
-     * @param filename le nom du fichier contenant la carte.
-     * @return un tableau 2D représentant la carte.
+     * Charge la carte à partir d'un fichier
+     * @param filename le nom du fichier contenant la carte
+     * @return un tableau 2D représentant la carte
      */
     static String[][] readMap(String filename) {
         String[][] map = null; // Déclaration du tableau de la carte, initialisé à null
